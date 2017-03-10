@@ -30,7 +30,8 @@ if [[ -z "$KIBANA_ACTIVE_VERSION" ]]; then
   require 'json'
   version = JSON.parse(STDIN.read)['version']['number']
   print 41 if version.start_with?('1.')
-  print 44 if version.start_with?('2.')
+  print 44 if version.start_with?('2.2')
+  print 46 if version.start_with?('2.4')
   print 5 if version.start_with?('5.')"
   KIBANA_ACTIVE_VERSION="$(curl "$DATABASE_URL" 2>/dev/null | ruby -e "$KIBANA_VERSION_PARSER" 2>/dev/null)"
 fi
